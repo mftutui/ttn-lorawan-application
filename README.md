@@ -74,15 +74,17 @@ Para utilizar a placa Arduino Nano v3.0 Gravitech.us é necessário instalar o [
 
 Após a instalação do diver é necessário reiniciar o computador. 
 
-A biblioteca LMIC modificada especialmente para o uso da frequêcia em AU915 eocontra-se [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99.zip).
+A biblioteca *LMIC* modificada especialmente para o uso da frequêcia em AU915 encontra-se [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99.zip).
 
-Faça a adição da biblioteca na IDE como mostrado na figura abaixo:
+A biblioteca *Thermistor* também será utilizada, ela está [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/Thermistor.zip).
+
+Faça a adição das duas bibliotecas na IDE como mostrado na figura abaixo:
 
 ![arduino21](https://github.com/mftutui/ttn-first-steps/blob/master/images/arduino21.png)
 
-Junto à biblioteca foi inserido um código base para o uso e envio dos dados do sensor.
+Junto à biblioteca *LMIC* foi inserido um código base para o uso e envio dos dados do sensor.
 
-Esse código pode ser encontrado em:
+Ele se chama *hackathon-ttn-temperatura* pode ser encontrado em:
 
 ![arduino22](https://github.com/mftutui/ttn-first-steps/blob/master/images/arduino22.png)
 
@@ -92,7 +94,7 @@ Não esqueça que no código estão faltando as chaves para associação do disp
 
 - Intervalo de envio: tempo entre os envios de uplink
 - Pin mapping: mapeamento dos pinos do Arduino para uso de SPI com o módulo RF96.
-- Função **do_send()**: funçAo responsável por fazer o envio dos dados.
+- Função **do_send()**: função responsável por fazer o envio dos dados (*uplink*).
 
 Lembrando que é necessário configurar a placa, processador e porta.
 - Placa: Arduino Nano
