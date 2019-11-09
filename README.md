@@ -15,7 +15,7 @@ Esse tutorial está dividido em 5 partes sendo elas:
 - Node-RED: dashboard
 
 
-### Device: montagem
+## Device: montagem
 
 Reconhecimento dos componentes e montagem do sensor de temperatura.
 
@@ -33,7 +33,7 @@ A montagem deve ser feita da seguinte maneira:
 
 ![montagem](https://github.com/mftutui/ttn-first-steps/blob/master/images/montagem.png)
 
-### Aplicação: criação
+## Aplicação: criação
 
 Criação da aplicação na TTN e associação de um dispositivo a mesma.
 
@@ -58,7 +58,7 @@ Adicione o Device clicando em **register device**.
 
 Complete o Device ID com uma identificação única para o mesmo dentro da aplicação. O campo de **Device EUI** pode ser completado pela TTN e é responsável pela identificação do dispositivo na rede da TTN.
 
-### Device: Arduino IDE
+## Device: Arduino IDE
 
 Serão necessárias as instalações da IDE do Arduino e também do *driver* específico para usar juntamente com o Arduino Nano disponibilizado. 
 
@@ -90,7 +90,7 @@ Esse código pode ser encontrado em:
 
 Não esqueça que no código estão faltando as chaves para associação do disposivivo e aplicação. Essas contram-se diretamente na TTN.
 
-#### Obs: demais alterações
+### Obs: demais alterações
 
 - Intervalo de envio: tempo entre os envios de uplink
 - Pin mapping: mapeamento dos pinos do Arduino para uso de SPI com o módulo RF96.
