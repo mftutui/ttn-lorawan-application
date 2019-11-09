@@ -72,8 +72,6 @@ Serão necessárias as instalações da IDE do Arduino e também do *driver* esp
 
 Para utilizar a placa Arduino Nano v3.0 Gravitech.us é necessário instalar o [*Driver CH340/CH341USB*](http://www.wch.cn/downloads/CH341SER_ZIP.html).
 
-![node-red7](https://github.com/mftutui/tutorial-lora-application/blob/master/imagens-tutorial/node-red7.png)
-
 Após a instalação do diver é necessário reiniciar o computador. 
 
 A biblioteca LMIC modificada especialmente para o uso da frequêcia em AU915 eocontra-se [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99.zip).
@@ -125,6 +123,17 @@ function Decoder(bytes, port) {
   };
 }
 ```
+
+<script\>
+function Decoder(bytes, port) {
+  var value1 = bytes[0];
+
+  return {
+    Temperatura: value1+"°C"
+  };
+}
+</script\>
+
 
 ![ttn26](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn26.png)
 
