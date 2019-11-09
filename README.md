@@ -212,11 +212,11 @@ Ao clicar duas vezes no bloco *Sensor* a opção de configuração do mesmo ser�
 
 O *App ID* ou *Application ID* é simplesmente o ID dado para a aplicação na hora da criação.
 
-![node-red39](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red39.png)
+![ttn39](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn39.png)
 
 A chave de *Access Keys* contra-se ao final da página da aplicação. 
 
-![node-red40](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red40.png)
+![ttn40](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn40.png)
 
 Essas informações podem ser encontradas na aplicação criada na TTN.
 
@@ -230,7 +230,7 @@ Finalmente a aplicação não precisa de mais configurações.
 
 ![node-red35](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red35.png)
 
-O acesso para o dashboard pode ser feito pelo endereço: **http://127.0.0.1:1880/ui**, nesse exemplo ele ficou da forma abaixo.
+O acesso para o dashboard pode ser feito pelo endereço: **http://127.0.0.1:1880/ui**, nesse exemplo ele ficou assim:
 
 ![node-red37](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red37.png)
 
