@@ -5,8 +5,7 @@ Tutorial para a criação de um Device utilizando o protocolo LoRaWAN com um Ard
 
 A aplicação propõe mostrar um dashboard em um computador a infromação de temperatura capturada através de um sensor acoplado a um dispositivo.
 
-cenario.png
-******************************************
+[cenario](https://github.com/mftutui/ttn-first-steps/blob/master/images/cenario.png)
 
 Esse tutorial está dividido em 5 partes sendo elas:
 
@@ -33,8 +32,7 @@ O kit de desenvolvimento é composto de:
 
 A montagem deve ser feita da seguinte maneira:
 
-montagem.png
-***********************************
+[](https://github.com/mftutui/ttn-first-steps/blob/master/images/montagem.png)
 
 ### Aplicação: criação
 
@@ -42,17 +40,15 @@ Criação da aplicação na TTN e associação de um dispositivo a mesma.
 
 A partir do login feito na plataforma The Things Network escolha a opção *Console*. 
 
-ttn2.png
-******************************************
+[ttn2](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn2.png)
 
 Logo em seguida, *APPLICATIONS*. 
 
-ttn3.png
-******************************************
+[ttn3](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn3.png)
 
 Adicione uma aplicação.
 
-ttn4.png
+[ttn4](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn4.png)
 
 A aplicação deve ter:
 - Application ID: Identificação para a sua aplicação.
@@ -62,7 +58,6 @@ A aplicação deve ter:
 Adicione o Device clicando em **register device**.
 
 Complete o Device ID com uma identificação única para o mesmo dentro da aplicação. O campo de **Device EUI** pode ser completado pela TTN e é responsável pela identificação do dispositivo na rede da TTN.
-
 
 ### Device: Arduino IDE
 
@@ -86,15 +81,13 @@ A biblioteca LMIC modificada especialmente para o uso da frequêcia em AU915 eoc
 
 Faça a adição da biblioteca na IDE como mostrado na figura abaixo:
 
-arduino21.png
-********************
+[arduino21](https://github.com/mftutui/ttn-first-steps/blob/master/images/arduino21.png)
 
 Junto à biblioteca foi inserido um código base para o uso e envio dos dados do sensor.
 
 Esse código pode ser encontrado em:
 
-arduino22.png
-********************
+[arduino22](https://github.com/mftutui/ttn-first-steps/blob/master/images/arduino22.png)
 
 Não esqueça que no código estão faltando as chaves para associação do disposivivo e aplicação. Essas contram-se diretamente na TTN.
 
@@ -112,13 +105,11 @@ Grave o código no dispositivos e acompanhe a saída serial para mais informaç�
 
 Assim que reconhecido, o status do device muda na TTN.
 
-ttn22.png
-********************
+[ttn22](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn22.png)
 
 Na aba **Data** é possível oservar os dados chegando.
 
-ttn33.png
-********************
+[ttn33](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn33.png)
 
 ### Aplicação: payload
 
@@ -126,14 +117,11 @@ Apesar de conseguir observar a chegada dos dados ainda não é possível identif
 
 Para isso, será feita a decodificação do payload. Em **Payload Formats** é possível inserir um código (em javaScript) capaz de transformar os valores recebidos para que os mesmos se tornem de fácil identificação. 
 
-ttn26.pgp
-********************
+[ttn26](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn26.png)
 
 O resultado da decodificação do payload pode ser observado também na aba **Data**, agora apresentada da seguinte maneira: 
 
-ttn28.jpg
-********************
-
+[ttn28](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn28.png)
 
 ### Node-RED: dashboard
 
