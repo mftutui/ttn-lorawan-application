@@ -76,7 +76,7 @@ Para utilizar a placa Arduino Nano v3.0 Gravitech.us é necessário instalar o [
 
 Após a instalação do diver é necessário reiniciar o computador. 
 
-A biblioteca LMIC modificada especialmente para o uso da frequêcia em AU915 eocontra-se em ********************.
+A biblioteca LMIC modificada especialmente para o uso da frequêcia em AU915 eocontra-se [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99.zip).
 
 Faça a adição da biblioteca na IDE como mostrado na figura abaixo:
 
@@ -114,7 +114,17 @@ Na aba **Data** é possível oservar os dados chegando.
 
 Apesar de conseguir observar a chegada dos dados ainda não é possível identificá-los como valores de temperatura.
 
-Para isso, será feita a decodificação do payload. Em **Payload Formats** é possível inserir um código (em javaScript) capaz de transformar os valores recebidos para que os mesmos se tornem de fácil identificação. 
+Para isso, será feita a decodificação do payload. Em **Payload Formats** é possível inserir um código (em javaScript) capaz de transformar os valores recebidos para que os mesmos se tornem de fácil identificação.
+
+```
+function Decoder(bytes, port) {
+  var value1 = bytes[0];
+
+  return {
+    Temperatura: value1+"°C"
+  };
+}
+```
 
 ![ttn26](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn26.png)
 
@@ -188,7 +198,7 @@ Mais umas vez clique nos três risquinhos e procure por *Import*.
 
 ![node-red19](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red19.png)
 
-Nesse caso vamos importar um flow inteito, para facilitar. O arquivo do flow está em: ***********************
+Nesse caso vamos importar um flow inteito, para facilitar. O arquivo do flow está [aqui](https://github.com/mftutui/ttn-lorawan-application/tree/master/node-red).
 
 ![node-red21](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red21.png)
 
@@ -204,7 +214,7 @@ O *App ID* ou *Application ID* é simplesmente o ID dado para a aplicação na h
 
 ![node-red39](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red39.png)
 
-A chave de *Access Keys* contra-se ao final da página da aplicaçào. 
+A chave de *Access Keys* contra-se ao final da página da aplicação. 
 
 ![node-red40](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red40.png)
 
