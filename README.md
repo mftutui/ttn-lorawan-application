@@ -124,17 +124,6 @@ function Decoder(bytes, port) {
 }
 ```
 
-<script\>
-function Decoder(bytes, port) {
-  var value1 = bytes[0];
-
-  return {
-    Temperatura: value1+"°C"
-  };
-}
-</script\>
-
-
 ![ttn26](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn26.png)
 
 O resultado da decodificação do payload pode ser observado também na aba **Data**, agora apresentada da seguinte maneira: 
