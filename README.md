@@ -1,6 +1,5 @@
 # ttn-lorawan-application
 
-# tutorial-lora-application
 Tutorial para a criação de um Device utilizando o protocolo LoRaWAN com um Arduino Nano, aplicação na The Things Network e dashboard em Node-RED.
 
 A aplicação propõe mostrar um dashboard em um computador a infromação de temperatura capturada através de um sensor acoplado a um dispositivo.
