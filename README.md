@@ -228,9 +228,9 @@ Finalmente a aplicação não precisa de mais configurações.
 
 ![node-red35](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red35.png)
 
-O acesso para o dashboard pode ser feito pelo endereço: **http://127.0.0.1:1880/ui**
+O acesso para o dashboard pode ser feito pelo endereço: **http://127.0.0.1:1880/ui**, nesse exemplo ele ficou da forma abaixo.
 
-
+![node-red37](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red37.png)
 
 
 
