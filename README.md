@@ -166,7 +166,7 @@ Acesse a aplicação pelo navegador usando o endereço **http://127.0.0.1:1880/*
   
 Dentro da plataforma clique nos três risquinhos no canto superior direito:
 
-![node-red1](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red1.png)
+![nod-red1](https://github.com/mftutui/ttn-first-steps/blob/master/images/nod-red1.png)
 
 Vá até *Manage palette*:
 
@@ -182,4 +182,4 @@ Em seguida, repita o procedimento para o módulo *node-red-contrib-ttn*
 
 Após a instação novas caixinhas de *nodes* aparecerão na barra lateral esquerda:
 
-![app](https://github.com/mftutui/tutorial-lora-application/blob/master/imagens-tutorial/animation.gif)
+![animation](https://github.com/mftutui/ttn-first-steps/blob/master/images/animation.gif)
