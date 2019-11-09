@@ -214,12 +214,13 @@ Essas informações podem ser encontradas na aplicação criada na TTN.
 
 Após preenchidas é necessário ainda inserir o ID do Device, contrado não na aplicação mas no próprio Device.
 
-![node-red43](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red43.png)
+![ttn43](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn43.png)
 
 Finalmente a aplicação não precisa de mais configurações.
 
 ![node-red35](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red35.png)
 
+O acesso para o dashboard pode ser feito pelo endereço: **http://127.0.0.1:1880/ui**
 
 
 
