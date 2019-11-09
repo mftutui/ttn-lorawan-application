@@ -174,7 +174,7 @@ Vá até *Manage palette*:
 
 Em *Install* procure por *node-red-dashboard* e faça a instalação do módulo:
 
-![node-red4](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red4.png)
+![ndoe-red4](https://github.com/mftutui/ttn-first-steps/blob/master/images/ndoe-red4.png)
 
 Em seguida, repita o procedimento para o módulo *node-red-contrib-ttn* 
 
