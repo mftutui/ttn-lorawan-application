@@ -176,10 +176,54 @@ Em *Install* procure por *node-red-dashboard* e faça a instalação do módulo:
 
 ![ndoe-red4](https://github.com/mftutui/ttn-first-steps/blob/master/images/ndoe-red4.png)
 
-Em seguida, repita o procedimento para o módulo *node-red-contrib-ttn* 
+Em seguida, repita o procedimento para o módulo *node-red-contrib-ttn*. 
 
 ![node-red5](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red5.png)
 
 Após a instação novas caixinhas de *nodes* aparecerão na barra lateral esquerda:
 
 ![animation](https://github.com/mftutui/ttn-first-steps/blob/master/images/animation.gif)
+
+Mais umas vez clique nos três risquinhos e procure por *Import*. 
+
+![node-red19](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red19.png)
+
+Nesse caso vamos importar um flow inteito, para facilitar. O arquivo do flow está em: ***********************
+
+![node-red21](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red21.png)
+
+Logo após, o flow poderá ser visto e deve parecer com esse:
+
+![node-red23](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red23.png)
+
+Ao clicar duas vezes no bloco *Sensor* a opção de configuração do mesmo será mostrada. Abra o app chamado de ttn e o modifique inserindo o *App ID* e *Access Key*.
+
+![node-red29](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red29.png)
+
+O *App ID* ou *Application ID* é simplesmente o ID dado para a aplicação na hora da criação.
+
+![node-red39](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red39.png)
+
+A chave de *Access Keys* contra-se ao final da página da aplicaçào. 
+
+![node-red40](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red40.png)
+
+Essas informações podem ser encontradas na aplicação criada na TTN.
+
+![node-red30](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red30.png)
+
+Após preenchidas é necessário ainda inserir o ID do Device, contrado não na aplicação mas no próprio Device.
+
+![node-red43](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red43.png)
+
+Finalmente a aplicação não precisa de mais configurações.
+
+![node-red35](https://github.com/mftutui/ttn-first-steps/blob/master/images/node-red35.png)
+
+
+
+
+
+
+
+
