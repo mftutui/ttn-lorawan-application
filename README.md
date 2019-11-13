@@ -1,12 +1,12 @@
 # ttn-lorawan-application
 
-Tutorial para a criação de um Device utilizando o protocolo LoRaWAN com um Arduino Nano, aplicação na The Things Network e dashboard em Node-RED.
+Tutorial para a criação de um Device (*endpoint) utilizando o protocolo LoRaWAN com um Arduino Nano juntamente com uma aplicação na The Things Network e dashboard para acompanhamento em Node-RED.
 
-A aplicação propõe mostrar um dashboard em um computador a infromação de temperatura capturada através de um sensor acoplado a um dispositivo.
+O tutorial propõe mostrar em um dashboard (local) a infromação de temperatura capturada através de um sensor acoplado ao dispositivo (Arduino Nano) utilizando associado a rede The Things Network.
 
 ![cenario](https://github.com/mftutui/ttn-first-steps/blob/master/images/cenario.png)
 
-Esse tutorial está dividido em 5 partes sendo elas:
+Esse tutorial está dividido em 5 partes:
 
 - Device: montagem
 - Aplicação: criação
@@ -14,14 +14,13 @@ Esse tutorial está dividido em 5 partes sendo elas:
 - Aplicação: payload
 - Node-RED: dashboard
 
-
 ## Device: montagem
 
 Reconhecimento dos componentes e montagem do sensor de temperatura.
 
-O kit de desenvolvimento é composto de:
-- Arduino Nano
-- Módulo transceptor LoRa RFM95
+O kit de desenvolvimento é composto por:
+- [Arduino Nano(https://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf) 
+- [Módulo transceptor LoRa RFM95](https://cdn.sparkfun.com/assets/learn_tutorials/8/0/4/RFM95_96_97_98W.pdf)
 - Regulador de tensão
 - Sensor de temperatura
 - Protoboard
@@ -54,13 +53,32 @@ A aplicação deve ter:
 - Description: Descrição da aplicação (não obrigatório).
 - Handler registration: De acordo com a TTN é recomendado escolher o cluster de rede mais próximo dos gateways e colocar seu servidor de aplicativos próximo ao cluster. Isso minimiza a latência da rede. Os clusters com prefixos “ttn” são operados pela The Things Network Foundation, outros são operados por parceiros.
 
+![ttn30](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn30.png)
+
+Após criar a aplicação é necessário registrar um *Device*.
+
+![ttn31](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn31.png)
+
 Adicione o Device clicando em **register device**.
 
-Complete o Device ID com uma identificação única para o mesmo dentro da aplicação. O campo de **Device EUI** pode ser completado pela TTN e é responsável pela identificação do dispositivo na rede da TTN.
+Complete o Device ID com uma identificação única para ele dentro da aplicação. 
+
+O campo de **Device EUI** pode ser gerado e é responsável pela identificação do dispositivo na rede da TTN. Para gerá-lo basta clicar no box com as setas cruzadas à esquerda (destacado em vermelho).
+
+![ttn10](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn10.png)
+
+Ao final, clique em *Register*.
+
+Uma tela como a seguinte deve aparecer:
+
+![ttn11](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn11.png)
+
 
 ## Device: Arduino IDE
 
-Serão necessárias as instalações da IDE do Arduino e também do *driver* específico para usar juntamente com o Arduino Nano disponibilizado. 
+Gravação do código de rotina para a captura do valor de temperatura e envio do mesmo via *UpLink* para a aplicação criada na TTN.
+
+Para a a gravação do código no Arduino será necessária a utilização da IDE do mesmo.
 
 **1) Baixe e instale a IDE**
 
@@ -68,27 +86,66 @@ Serão necessárias as instalações da IDE do Arduino e também do *driver* esp
 - [Arduino para Linux](https://www.arduino.cc/en/guide/linux)
 - [Arduino para macOS](https://www.arduino.cc/en/guide/macOSX)
 
-**Pacote para Arduino Nano**
+***Driver* para Arduino Nano v3.0**
 
-Para utilizar a placa Arduino Nano v3.0 Gravitech.us é necessário instalar o [*Driver CH340/CH341USB*](http://www.wch.cn/downloads/CH341SER_ZIP.html).
+Para utilizar a placa Arduino Nano v3.0 Gravitech.us é necessário instalar o *Driver CH340/CH341USB*, ele se contra [nesse link](http://www.wch.cn/downloads/CH341SER_ZIP.html). 
 
 Após a instalação do diver é necessário reiniciar o computador. 
 
-A biblioteca *LMIC* modificada especialmente para o uso da frequêcia em AU915 encontra-se [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99.zip).
+***Inclusão das bibliotecas na IDE**
 
-A biblioteca *Thermistor* também será utilizada, ela está [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/Thermistor.zip).
+A programação do Arduino para o uso do *LoRaWAN* será feita a partir da bliblioteca *LMIC*. A biblioteca original pode ser encontrada [aqui](https://www.arduinolibraries.info/libraries/mcci-lo-ra-wan-lmic-library) e [aqui](https://github.com/mcci-catena/arduino-lmic). Mas, para facilitar, todas as configurações necessárias para a utilização da biblioteca no plano de frequência **AU915** já foram feitas e a biblioteca modificada está nesse repositório com o nome *[MCCI_LoRaWAN_LMIC_library-3.0.99(modificada).zip](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99(modificada).zip)*. 
 
-Faça a adição das duas bibliotecas na IDE como mostrado na figura abaixo:
+A biblioteca *Thermistor* também será utilizada no código, ela está [aqui](https://github.com/mftutui/ttn-lorawan-application/blob/master/Thermistor.zip).
+
+Após baixar, faça a adição das duas bibliotecas na IDE como mostrado na figura abaixo:
 
 ![arduino21](https://github.com/mftutui/ttn-first-steps/blob/master/images/arduino21.png)
 
-Junto à biblioteca *LMIC* foi inserido um código base para o uso e envio dos dados do sensor.
+Junto à biblioteca *LMIC* foi inserido um código base como exemplo para o uso e envio dos dados do sensor.
 
 Ele se chama *hackathon-ttn-temperatura* pode ser encontrado em:
 
 ![arduino22](https://github.com/mftutui/ttn-first-steps/blob/master/images/arduino22.png)
 
-Não esqueça que no código estão faltando as chaves para associação do disposivivo e aplicação. Essas contram-se diretamente na TTN.
+***Inclusão das chaves **
+
+No código estão faltando as chaves para associação do disposivivo e aplicação. Essas chaves contram-se diretamente na TTN.
+
+As constantes devem ser preenchidas nos campos **FILMEIN** que estão entre as linhas 45 a 60.
+
+```
+// This EUI must be in little-endian format, so least-significant-byte
+// first. When copying an EUI from ttnctl output, this means to reverse
+// the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,
+// 0x70.
+static const u1_t PROGMEM APPEUI[8] = { FILLMEIN };
+void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
+
+// This should also be in little endian format, see above.
+static const u1_t PROGMEM DEVEUI[8] = { FILLMEIN };
+void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
+
+// This key should be in big endian format (or, since it is not really a
+// number but a block of memory, endianness does not really apply). In
+// practice, a key taken from ttnctl can be copied as-is.
+static const u1_t PROGMEM APPKEY[16] = { FILLMEIN };
+void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
+```
+A primeira constante a ser a ser preenchida **DEVEUI** pode ser encontrada, assim como as demais, na página do dispositivo. 
+
+![ttn13](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn13.png)
+
+Como mostrado na figura, é necessário clicar no campo destacado em vermelho para que o **DEVEUI** use o prefixo *0x* e os valores estejam separados por vírgulas.
+
+Em seguida, esses valores deverão ser trocados de *msb* para *lsb* clicando no campo destacado em vermelho como pode ser visto na figura abaixo. 
+
+![ttn15](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn15.png)
+
+Para copiar o **Device EUI** basta clicar no campo a direita mostrado na figura seguinte e colá-lo no código.
+
+![ttn16](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn16.png)
+
 
 ### Obs: demais alterações
 
