@@ -1,6 +1,6 @@
 # ttn-lorawan-application
 
-Tutorial para a criação de um Device (*endpoint) utilizando o protocolo LoRaWAN com um Arduino Nano juntamente com uma aplicação na The Things Network e dashboard para acompanhamento em Node-RED.
+Tutorial para a criação de um Device (*endpoint*) utilizando o protocolo LoRaWAN com um Arduino Nano juntamente com uma aplicação na The Things Network e dashboard para acompanhamento em Node-RED.
 
 O tutorial propõe mostrar em um dashboard (local) a infromação de temperatura capturada através de um sensor acoplado ao dispositivo (Arduino Nano) utilizando associado a rede The Things Network.
 
@@ -19,7 +19,7 @@ Esse tutorial está dividido em 5 partes:
 Reconhecimento dos componentes e montagem do sensor de temperatura.
 
 O kit de desenvolvimento é composto por:
-- [Arduino Nano(https://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf) 
+- [Arduino Nano](https://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf) 
 - [Módulo transceptor LoRa RFM95](https://cdn.sparkfun.com/assets/learn_tutorials/8/0/4/RFM95_96_97_98W.pdf)
 - Regulador de tensão
 - Sensor de temperatura
@@ -92,7 +92,7 @@ Para utilizar a placa Arduino Nano v3.0 Gravitech.us é necessário instalar o *
 
 Após a instalação do diver é necessário reiniciar o computador. 
 
-***Inclusão das bibliotecas na IDE**
+**Inclusão das bibliotecas na IDE**
 
 A programação do Arduino para o uso do *LoRaWAN* será feita a partir da bliblioteca *LMIC*. A biblioteca original pode ser encontrada [aqui](https://www.arduinolibraries.info/libraries/mcci-lo-ra-wan-lmic-library) e [aqui](https://github.com/mcci-catena/arduino-lmic). Mas, para facilitar, todas as configurações necessárias para a utilização da biblioteca no plano de frequência **AU915** já foram feitas e a biblioteca modificada está nesse repositório com o nome *[MCCI_LoRaWAN_LMIC_library-3.0.99(modificada).zip](https://github.com/mftutui/ttn-lorawan-application/blob/master/MCCI_LoRaWAN_LMIC_library-3.0.99(modificada).zip)*. 
 
@@ -146,12 +146,78 @@ Para copiar o **Device EUI** basta clicar no campo a direita mostrado na figura 
 
 ![ttn16](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn16.png)
 
+Os demais campos: **Application EUI** e **App Key** preenchem respectivamente as constantes de **APPEUI** e **APPKEY** no código. 
+
+O valor de **APPEUI** deve ter o prefixo *0x* e também dever ser mostrado como *lsb*. Já a **APPKEY** deve ter o prefixo *0x* mas a ordem deve ser *msb*. A imagem abaixo mostra destaca os campos a serem utilizados para gerar as constantes de forma correta. 
+
+![ttn17](https://github.com/mftutui/ttn-first-steps/blob/master/images/ttn17.png)
 
 ### Obs: demais alterações
 
+Afim de demonstrar o funcionamento da biblioteca para a utilização da mesma por outras placas com outros microcontroladores, com outros tempos de envio e outra função para envio de dados, seguem destacadas as partes do código responsáveis.
+
 - Intervalo de envio: tempo entre os envios de uplink
-- Pin mapping: mapeamento dos pinos do Arduino para uso de SPI com o módulo RF96.
+
+```
+// Schedule TX every this many seconds (might become longer due to duty
+// cycle limitations).
+const unsigned TX_INTERVAL = 60;
+```
+
+- Pin mapping: mapeamento dos pinos do Arduino para uso de SPI com o módulo RFM96.
+
+Usando o módulo RFM95 e o Arduino Nano por exemplo a pinagem ficou a seguinte:
+
+| RFM95 | Arduino Nano |
+|:-----:|:------------:|
+|  DIO0 |       2      |
+|  DIO1 |       3      |
+|  MISO |              |
+|  MOSI |              |
+|  SCK  |              |
+|  NSS  |      10      |
+| RESET |       5      |
+
+Logo, o *pin mapping* fica da seguinte maneira:
+
+```
+// Pin mapping
+const lmic_pinmap lmic_pins = {
+    .nss = 10,
+    .rxtx = LMIC_UNUSED_PIN,
+    .rst = 5,
+    .dio = {2, 3, LMIC_UNUSED_PIN},
+};
+```
+
 - Função **do_send()**: função responsável por fazer o envio dos dados (*uplink*).
+
+```
+void do_send(osjob_t* j){
+
+    Thermistor temp(0);
+    int Temp = temp.getTemp();
+    
+    Serial.println("------------------------------");
+    Serial.print("Temperatura aproximada: ");
+    Serial.print(Temp);
+    Serial.println("°C");
+    Serial.println("------------------------------");
+    
+    u1_t mydata[1];
+    mydata[0] = Temp;
+
+    // Check if there is not a current TX/RX job running
+    if (LMIC.opmode & OP_TXRXPEND) {
+        Serial.println(F("OP_TXRXPEND, not sending"));
+    } else {
+        // Prepare upstream data transmission at the next possible time.
+        LMIC_setTxData2(1, mydata, sizeof(mydata), 0);
+        Serial.println(F("Packet queued"));
+    }
+    // Next TX is scheduled after TX_COMPLETE event.
+}
+```
 
 Lembrando que é necessário configurar a placa, processador e porta.
 - Placa: Arduino Nano
